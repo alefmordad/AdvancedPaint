@@ -26,11 +26,11 @@ public class LoginController {
         try {
             readUserInfo();
             userDAO.create(user);
-            Dialogue.show(user + USER_SUCCESSFULLY_ADDED);
+            Dialogue.error(user + USER_SUCCESSFULLY_ADDED);
         } catch (EmptyFieldException e) {
-            Dialogue.show(e.getMessage());
+            Dialogue.error(e.getMessage());
         } catch (DaoException e) {
-            Dialogue.show(USERNAME + " '" + user.getUsername() + "' " + IS_TAKEN);
+            Dialogue.error(USERNAME + " '" + user.getUsername() + "' " + IS_TAKEN);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -46,11 +46,11 @@ public class LoginController {
             if (otherUser.equals(user))
                 System.out.println("right");
             else
-                Dialogue.show(WRONG_PASSWORD);
+                Dialogue.error(WRONG_PASSWORD);
         } catch (EmptyFieldException e) {
-            Dialogue.show(e.getMessage());
+            Dialogue.error(e.getMessage());
         } catch (DaoException e) {
-            Dialogue.show(NO_SUCH_USER);
+            Dialogue.error(NO_SUCH_USER);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -1,6 +1,7 @@
 package main.view;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ public class Login extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Login");
+        primaryStage.setOnCloseRequest(t -> System.exit(0));
         primaryStage.show();
     }
 }

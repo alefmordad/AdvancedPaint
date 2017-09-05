@@ -1,11 +1,17 @@
 package main.utils;
 
-import javax.swing.*;
+import javafx.scene.control.Alert;
 
 public class Dialogue {
 
-    public static void show(String msg) {
-        JOptionPane.showMessageDialog(null, msg);
+    private static Alert alert;
+
+    public static void error(String msg) {
+        alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
     public static void nonEmptyCheck(String str, String errorMessage) throws EmptyFieldException {

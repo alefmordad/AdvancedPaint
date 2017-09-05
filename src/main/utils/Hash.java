@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Digest {
+public class Hash {
 
     private static MessageDigest md;
     private static BigInteger bigInteger;

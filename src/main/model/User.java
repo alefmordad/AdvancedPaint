@@ -1,6 +1,6 @@
 package main.model;
 
-import main.utils.Digest;
+import main.utils.Hash;
 
 import java.util.Random;
 
@@ -28,7 +28,7 @@ public class User extends Model {
     }
 
     private void calculatePassword(String password) {
-        this.password = Digest.getMD5String(password + String.valueOf(salt));
+        this.password = Hash.getMD5String(password + String.valueOf(salt));
     }
 
     public int getSalt() {

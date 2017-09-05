@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Paint extends Application {
 
-    private final User user;
+    private User user;
 
     public Paint(User user) {
         this.user = user;
@@ -19,7 +19,7 @@ public class Paint extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Paint.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Paint.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Hello " + user.getUsername());
         primaryStage.setOnCloseRequest(t -> System.exit(0));

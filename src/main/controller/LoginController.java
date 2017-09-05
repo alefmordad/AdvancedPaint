@@ -3,11 +3,14 @@ package main.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import main.dao.UserDao;
 import main.model.User;
+import main.utils.DaoException;
 import main.utils.Dialogue;
 import main.utils.EmptyFieldException;
-import main.utils.DaoException;
+import main.view.Paint;
 
 import static main.utils.Constants.*;
 
@@ -17,10 +20,10 @@ public class LoginController {
     private UserDao userDAO = new UserDao();
 
     @FXML
-    public TextField txtUsername;
+    TextField txtUsername;
 
     @FXML
-    public PasswordField txtPassword;
+    PasswordField txtPassword;
 
     public void register() {
         try {
@@ -43,8 +46,11 @@ public class LoginController {
             readUserInfo();
             user = userDAO.get(user);
             User otherUser = new User(txtUsername.getText(), txtPassword.getText(), user.getSalt());
-            if (otherUser.equals(user))
-                System.out.println("right");
+            if (otherUser.equals(user)) {
+                Stage stage  = (Stage) txtUsername.getScene().getWindow();
+                stage.close();
+                new Paint(user).start(new Stage());
+            }
             else
                 Dialogue.error(WRONG_PASSWORD);
         } catch (EmptyFieldException e) {

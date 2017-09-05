@@ -21,7 +21,7 @@ public class Paint extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/Paint.fxml"));
         primaryStage.setScene(new Scene(root));
-        primaryStage.setTitle("Hello " + user.getUsername());
+        primaryStage.setTitle("Hello '" + user.getUsername() + "'");
         primaryStage.setOnCloseRequest(t -> System.exit(0));
         primaryStage.show();
     }

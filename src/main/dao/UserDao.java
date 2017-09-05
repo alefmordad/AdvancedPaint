@@ -20,8 +20,8 @@ public class UserDao extends Dao<User> {
             Criteria criteria = session.createCriteria(aClass);
             criteria.add(Restrictions.eq("username", user.getUsername()));
             criteria.setMaxResults(1);
-            List<User> list = criteria.list();
-            return list.get(0);
+            List list = criteria.list();
+            return (User) list.get(0);
         } catch (Exception h) {
             throw new DaoException();
         } finally {

@@ -4,10 +4,8 @@ import javafx.scene.control.Alert;
 
 public class Dialogue {
 
-    private static Alert alert;
-
     public static void error(String msg) {
-        alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText(null);
         alert.setContentText(msg);

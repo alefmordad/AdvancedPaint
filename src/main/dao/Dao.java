@@ -9,20 +9,19 @@ import org.hibernate.cfg.Configuration;
 
 public abstract class Dao<T extends Model> {
 
-    protected Configuration configuration;
-    protected SessionFactory sessionFactory;
-    protected Session session;
-    protected Transaction transaction;
-    protected Class aClass;
+    private final SessionFactory sessionFactory;
+    final Session session;
+    Transaction transaction;
+    Class aClass;
 
     {
-        configuration = new Configuration();
+        Configuration configuration = new Configuration();
         configuration.configure();
         sessionFactory = configuration.buildSessionFactory();
         session = sessionFactory.openSession();
     }
 
-    protected Dao(Class aClass) {
+    Dao(Class aClass) {
         this.aClass = aClass;
     }
 

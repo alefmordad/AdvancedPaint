@@ -7,9 +7,6 @@ import java.security.NoSuchAlgorithmException;
 public class Hash {
 
     private static MessageDigest md;
-    private static BigInteger bigInteger;
-    private static String hashString;
-    private static byte[] md5Bytes;
 
     static {
         try {
@@ -19,19 +16,19 @@ public class Hash {
         }
     }
 
-    public static String getMD5String(byte[] bytes) {
-        md5Bytes = md.digest(bytes);
+    private static String getMD5String(byte[] bytes) {
+        byte[] md5Bytes = md.digest(bytes);
         return byteArrayToString(md5Bytes);
     }
 
-    public static String byteArrayToString(byte[] md5Bytes) {
-        bigInteger = new BigInteger(1, md5Bytes);
-        hashString = bigInteger.toString(16);
+    private static String byteArrayToString(byte[] md5Bytes) {
+        BigInteger bigInteger = new BigInteger(1, md5Bytes);
+        String hashString = bigInteger.toString(16);
         hashString = makeDigitsFixedToI(hashString, 32);
         return hashString;
     }
 
-    public static byte[] stringToByteArray(String str) {
+    private static byte[] stringToByteArray(String str) {
         return str.getBytes();
     }
 
@@ -40,9 +37,11 @@ public class Hash {
         return getMD5String(strBytes);
     }
 
-    public static String makeDigitsFixedToI(String hashText, int i) {
-        while (hashText.length() < i)
-            hashText = "0" + hashText;
+    private static String makeDigitsFixedToI(String hashText, int i) {
+        StringBuilder hashTextBuilder = new StringBuilder(hashText);
+        while (hashTextBuilder.length() < i)
+            hashTextBuilder.insert(0, "0");
+        hashText = hashTextBuilder.toString();
         return hashText;
     }
 

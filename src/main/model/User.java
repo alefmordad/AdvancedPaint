@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class User extends Model {
 
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     private String username;
     private String password;
@@ -69,9 +69,7 @@ public class User extends Model {
 
         User user = (User) o;
 
-        if (salt != user.salt) return false;
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        return password != null ? password.equals(user.password) : user.password == null;
+        return salt == user.salt && (username != null ? username.equals(user.username) : user.username == null) && (password != null ? password.equals(user.password) : user.password == null);
     }
 
     @Override

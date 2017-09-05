@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import main.dao.UserDao;
 import main.model.User;
 import main.utils.DaoException;
@@ -17,7 +16,7 @@ import static main.utils.Constants.*;
 public class LoginController {
 
     private User user;
-    private UserDao userDAO = new UserDao();
+    private final UserDao userDAO = new UserDao();
 
     @FXML
     TextField txtUsername;

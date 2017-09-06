@@ -11,6 +11,8 @@ import main.utils.Dialogue;
 import main.utils.EmptyFieldException;
 import main.view.Paint;
 
+import java.io.IOException;
+
 import static main.utils.Constants.*;
 
 public class LoginController {
@@ -26,7 +28,7 @@ public class LoginController {
 
     public void register() {
         try {
-            readUserInfo();
+            parseUserInfo();
             userDAO.create(user);
             Dialogue.error(user + USER_SUCCESSFULLY_ADDED);
         } catch (EmptyFieldException e) {
@@ -42,13 +44,12 @@ public class LoginController {
 
     public void login() {
         try {
-            readUserInfo();
+            parseUserInfo();
             user = userDAO.get(user);
             User otherUser = new User(txtUsername.getText(), txtPassword.getText(), user.getSalt());
-            if (otherUser.equals(user)) {
-                ((Stage) txtUsername.getScene().getWindow()).close();
-                new Paint(user).start(new Stage());
-            } else
+            if (otherUser.equals(user))
+                startPaint();
+            else
                 Dialogue.error(WRONG_PASSWORD);
         } catch (EmptyFieldException e) {
             Dialogue.error(e.getMessage());
@@ -61,7 +62,12 @@ public class LoginController {
         }
     }
 
-    private void readUserInfo() throws EmptyFieldException {
+    private void startPaint() throws IOException {
+        ((Stage) txtUsername.getScene().getWindow()).close();
+        new Paint(user).start(new Stage());
+    }
+
+    private void parseUserInfo() throws EmptyFieldException {
         Dialogue.nonEmptyCheck(txtUsername.getText(), USERNAME + " " + CANT_BE_EMPTY);
         Dialogue.nonEmptyCheck(txtPassword.getText(), PASSWORD + " " + CANT_BE_EMPTY);
         generateUser();

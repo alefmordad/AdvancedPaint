@@ -7,6 +7,13 @@ public class Rectangle extends javafx.scene.shape.Rectangle implements Shape {
     private int identifier;
     private User user;
 
+    public Rectangle() {
+    }
+
+    public Rectangle(User user) {
+        this.user = user;
+    }
+
     @Override
     public User getUser() {
         return user;

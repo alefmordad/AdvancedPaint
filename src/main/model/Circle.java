@@ -7,6 +7,13 @@ public class Circle extends javafx.scene.shape.Circle implements Shape {
     private int identifier;
     private User user;
 
+    public Circle() {
+    }
+
+    public Circle(User user) {
+        this.user = user;
+    }
+
     @Override
     public User getUser() {
         return user;

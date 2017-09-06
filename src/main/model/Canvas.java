@@ -15,7 +15,6 @@ public class Canvas {
     public void add(Shape shape) {
         shapes.add(shape);
         canvas.getGraphicsContext2D().setStroke(shape.getStroke());
-        canvas.getGraphicsContext2D().setFill(shape.getFill());
         shape.draw(canvas.getGraphicsContext2D());
     }
 }

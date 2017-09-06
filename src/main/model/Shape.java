@@ -8,8 +8,6 @@ public interface Shape extends Model {
     void draw(GraphicsContext gc);
     void setStroke(Paint p);
     Paint getStroke();
-    void setFill(Paint p);
-    Paint getFill();
     User getUser();
 
 }

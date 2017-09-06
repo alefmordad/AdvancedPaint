@@ -13,7 +13,6 @@ public class UserDao extends Dao<User> {
         super(User.class);
     }
 
-    @Override
     public User get(User user) throws DaoException {
         transaction = session.beginTransaction();
         try {

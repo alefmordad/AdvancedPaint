@@ -71,10 +71,6 @@ public class User implements Model {
         return "User{" + "username='" + username + '\'' + '}';
     }
 
-    public void print() {
-        System.out.println(identifier + " " + username + " " + salt);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,8 +1,9 @@
 package main.model;
 
-import main.utils.DaoException;
+import javafx.scene.paint.Paint;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Canvas {
@@ -14,14 +15,18 @@ public class Canvas {
         this.canvas = canvas;
     }
 
-    public void add(Shape shape) {
+    public void draw(Shape shape) {
         shapes.add(shape);
-        canvas.getGraphicsContext2D().setStroke(shape.getStroke());
+        canvas.getGraphicsContext2D().setStroke(Paint.valueOf(shape.getStroke()));
         shape.draw(canvas.getGraphicsContext2D());
-        try {
-            shape.save();
-        } catch (DaoException e) {
-            e.printStackTrace();
-        }
+    }
+
+    public void draw(List<Shape> shapes) {
+        shapes.stream().forEach(shape -> draw(shape));
+    }
+
+    public void clear() {
+        shapes.clear();
+        canvas.getGraphicsContext2D().restore();
     }
 }

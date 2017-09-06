@@ -12,7 +12,7 @@
         <property name="startY" type="double" not-null="true"/>
         <property name="endX" type="double" not-null="true"/>
         <property name="endY" type="double" not-null="true"/>
-
+        <property name="stroke" type="string" not-null="true"/>
         <many-to-one name="user" not-null="true" cascade="save-update" lazy="false"/>
     </class>
 </hibernate-mapping>

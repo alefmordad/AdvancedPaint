@@ -46,7 +46,7 @@ public class Rectangle extends Shape {
     }
 
     public Rectangle(User user) {
-        super(new RectangleDao(), user);
+        super(new RectangleDao(user), user);
     }
 
     @Override

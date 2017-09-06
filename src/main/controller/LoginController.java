@@ -24,12 +24,12 @@ public class LoginController {
     PasswordField txtPassword;
 
     private User user;
-    private final UserDao userDAO = new UserDao();
+    private final UserDao dao = new UserDao();
 
     public void register() {
         try {
             parseUserInfo();
-            userDAO.create(user);
+            dao.create(user);
             Dialogue.info(user + USER_SUCCESSFULLY_ADDED);
         } catch (EmptyFieldException e) {
             Dialogue.error(e.getMessage());
@@ -45,7 +45,7 @@ public class LoginController {
     public void login() {
         try {
             parseUserInfo();
-            user = userDAO.get(user);
+            user = dao.get(user);
             User otherUser = new User(txtUsername.getText(), txtPassword.getText(), user.getSalt());
             if (otherUser.equals(user))
                 startPaint();

@@ -13,7 +13,7 @@ public class Circle extends Shape {
     }
 
     public Circle(User user) {
-        super(new CircleDao(), user);
+        super(new CircleDao(user), user);
     }
 
     public double getCenterX() {

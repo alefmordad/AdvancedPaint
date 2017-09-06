@@ -1,7 +1,6 @@
 package main.model;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Paint;
 import main.dao.Dao;
 import main.utils.DaoException;
 
@@ -9,7 +8,7 @@ public abstract class Shape implements Model {
 
     private int identifier;
     private User user;
-    private Paint stroke;
+    private String stroke;
     private Dao dao;
 
     public Shape() {
@@ -30,11 +29,11 @@ public abstract class Shape implements Model {
         this.identifier = identifier;
     }
 
-    public void setStroke(Paint p) {
-        stroke = p;
+    public void setStroke(String stroke) {
+        this.stroke = stroke;
     }
 
-    public Paint getStroke() {
+    public String getStroke() {
         return stroke;
     }
 

@@ -1,16 +1,13 @@
 package main.dao;
 
 import main.model.Rectangle;
-import main.utils.DaoException;
+import main.model.Shape;
+import main.model.User;
 
-public class RectangleDao extends Dao<Rectangle> {
+public class RectangleDao extends Dao<Shape> {
 
-    public RectangleDao() {
-        super(Rectangle.class);
+    public RectangleDao(User user) {
+        super(Rectangle.class, user);
     }
 
-    @Override
-    public Rectangle get(Rectangle rectangle) throws DaoException {
-        return null;
-    }
 }

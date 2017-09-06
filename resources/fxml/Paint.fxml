@@ -5,26 +5,23 @@
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="main.controller.PaintController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.PaintController">
     <children>
         <Pane layoutX="11.0" layoutY="14.0" prefHeight="373.0" prefWidth="443.0" style="-fx-border-color: black;">
             <children>
-                <Canvas fx:id="jfxCanvas" height="373.0" onMousePressed="#canvasMousePressed"
-                        onMouseReleased="#canvasMouseReleased" width="443.0"/>
+                <Canvas fx:id="jfxCanvas" height="373.0" onMousePressed="#canvasMousePressed" onMouseReleased="#canvasMouseReleased" width="443.0" />
             </children>
         </Pane>
-        <ColorPicker fx:id="colorPicker" editable="true" layoutX="461.0" layoutY="116.0"
-                     xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+        <ColorPicker fx:id="colorPicker" editable="true" layoutX="461.0" layoutY="116.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
             <value>
-                <Color blue="0" green="0" red="0"/>
+                <Color blue="0" green="0" red="0" />
             </value>
         </ColorPicker>
-        <Button layoutX="486.0" layoutY="14.0" mnemonicParsing="false" onAction="#circleClick" prefHeight="25.0"
-                prefWidth="68.0" text="Circle"/>
-        <Button layoutX="486.0" layoutY="45.0" mnemonicParsing="false" onAction="#rectangleClick" text="Rectangle"/>
-        <Button layoutX="486.0" layoutY="76.0" mnemonicParsing="false" onAction="#lineClick" prefHeight="25.0"
-                prefWidth="68.0" text="Line"/>
+        <Button layoutX="486.0" layoutY="14.0" mnemonicParsing="false" onAction="#circleClicked" prefHeight="25.0" prefWidth="68.0" text="Circle" />
+        <Button layoutX="486.0" layoutY="45.0" mnemonicParsing="false" onAction="#rectangleClicked" text="Rectangle" />
+        <Button layoutX="486.0" layoutY="76.0" mnemonicParsing="false" onAction="#lineClicked" prefHeight="25.0" prefWidth="68.0" text="Line" />
+      <Button layoutX="486.0" layoutY="362.0" mnemonicParsing="false" onAction="#clearClicked" prefHeight="25.0" prefWidth="68.0" text="Clear" />
+      <Button layoutX="486.0" layoutY="331.0" mnemonicParsing="false" onAction="#loadClicked" prefHeight="25.0" prefWidth="68.0" text="Load" />
     </children>
 </Pane>

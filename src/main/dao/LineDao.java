@@ -1,16 +1,13 @@
 package main.dao;
 
 import main.model.Line;
-import main.utils.DaoException;
+import main.model.Shape;
+import main.model.User;
 
-public class LineDao extends Dao<Line> {
+public class LineDao extends Dao<Shape> {
 
-    public LineDao() {
-        super(Line.class);
+    public LineDao(User user) {
+        super(Line.class, user);
     }
 
-    @Override
-    public Line get(Line line) throws DaoException {
-        return null;
-    }
 }

@@ -12,7 +12,7 @@
         <property name="y" type="double" not-null="true"/>
         <property name="width" type="double" not-null="true"/>
         <property name="height" type="double" not-null="true"/>
-       
+        <property name="stroke" type="string" not-null="true"/>
         <many-to-one name="user" not-null="true" cascade="save-update" lazy="false"/>
     </class>
 </hibernate-mapping>

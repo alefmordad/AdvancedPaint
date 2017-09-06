@@ -11,7 +11,7 @@
         <property name="centerX" type="double" not-null="true"/>
         <property name="centerY" type="double" not-null="true"/>
         <property name="radius" type="double" not-null="true"/>
-
+        <property name="stroke" type="string" not-null="true"/>
         <many-to-one name="user" not-null="true" cascade="save-update" lazy="false"/>
     </class>
 </hibernate-mapping>

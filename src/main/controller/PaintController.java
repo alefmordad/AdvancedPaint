@@ -4,18 +4,23 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import main.dao.CircleDao;
+import main.dao.LineDao;
+import main.dao.RectangleDao;
 import main.model.*;
+import main.utils.DaoException;
 
 import static java.lang.Math.abs;
 
 public class PaintController {
 
     @FXML
-    public ColorPicker colorPicker;
+    ColorPicker colorPicker;
 
     @FXML
-    public javafx.scene.canvas.Canvas jfxCanvas;
+    javafx.scene.canvas.Canvas jfxCanvas;
 
     private Shape shape;
     private State state;
@@ -23,7 +28,10 @@ public class PaintController {
     private Point2D end;
     private Canvas canvas;
     private User user;
-    private boolean isInitialized = false;
+    private CircleDao circleDao;
+    private RectangleDao rectangleDao;
+    private LineDao lineDao;
+    private boolean isInitialized;
 
     public User getUser() {
         return user;
@@ -33,37 +41,51 @@ public class PaintController {
         this.user = user;
     }
 
-    public void circleClick() {
+    public void loadClicked() {
+        if (!isInitialized) {
+            initialize();
+            isInitialized = true;
+        }
+    }
+
+    public void circleClicked() {
         state = State.CREATE;
         shape = new Circle(user);
     }
 
-    public void rectangleClick() {
+    public void rectangleClicked() {
         state = State.CREATE;
         shape = new Rectangle(user);
     }
 
-    public void lineClick() {
+    public void lineClicked() {
         state = State.CREATE;
         shape = new Line(user);
     }
 
     public void canvasMousePressed(MouseEvent mouseEvent) {
-        if (!isInitialized) {
-            initialize();
-            isInitialized = true;
-        }
         base = parsePoint(mouseEvent);
     }
 
-    public void canvasMouseReleased(MouseEvent mouseEvent) {
+    public void canvasMouseReleased(MouseEvent mouseEvent) throws DaoException {
         end = parsePoint(mouseEvent);
         prepareShapeAppearance(shape);
         switch (state) {
             case CREATE:
                 generateShape(shape, base, end);
-                canvas.add(shape);
+                canvas.draw(shape);
+                shape.save();
                 break;
+        }
+    }
+
+    public void clearClicked() {
+        canvas.clear();
+        try {
+            circleDao.clear();
+            rectangleDao.clear();
+            lineDao.clear();
+        } catch (DaoException e) {
         }
     }
 
@@ -86,7 +108,7 @@ public class PaintController {
     }
 
     private void prepareShapeAppearance(Shape shape) {
-        shape.setStroke(pickColor());
+        shape.setStroke(pickColor().toString());
     }
 
     private Color pickColor() {
@@ -98,7 +120,21 @@ public class PaintController {
         shape = new Circle(user);
         base = new Point2D(0, 0);
         end = new Point2D(0, 0);
+        circleDao = new CircleDao(user);
+        rectangleDao = new RectangleDao(user);
+        lineDao = new LineDao(user);
         canvas = new Canvas(jfxCanvas);
+        loadShapes();
+    }
+
+    private void loadShapes() {
+        try {
+            canvas.draw(circleDao.getAll());
+            canvas.draw(rectangleDao.getAll());
+            canvas.draw(lineDao.getAll());
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
     }
 
     private Point2D parsePoint(MouseEvent mouseEvent) {

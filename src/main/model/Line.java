@@ -14,7 +14,7 @@ public class Line extends Shape {
     }
 
     public Line(User user) {
-        super(new LineDao(), user);
+        super(new LineDao(user), user);
     }
 
     public double getStartX() {

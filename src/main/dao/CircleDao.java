@@ -1,16 +1,12 @@
 package main.dao;
 
 import main.model.Circle;
-import main.utils.DaoException;
+import main.model.Shape;
+import main.model.User;
 
-public class CircleDao extends Dao<Circle> {
+public class CircleDao extends Dao<Shape> {
 
-    public CircleDao() {
-        super(Circle.class);
-    }
-
-    @Override
-    public Circle get(Circle circle) throws DaoException {
-        return null;
+    public CircleDao(User user) {
+        super(Circle.class, user);
     }
 }

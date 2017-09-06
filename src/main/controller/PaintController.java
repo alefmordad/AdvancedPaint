@@ -9,8 +9,14 @@ import javafx.scene.paint.Color;
 import main.dao.CircleDao;
 import main.dao.LineDao;
 import main.dao.RectangleDao;
-import main.model.*;
-import main.utils.DaoException;
+import main.model.Canvas;
+import main.model.State;
+import main.model.User;
+import main.model.model.shape.Circle;
+import main.model.model.shape.Line;
+import main.model.model.shape.Rectangle;
+import main.model.model.shape.Shape;
+import main.utils.utils.exceptions.DaoException;
 
 import static java.lang.Math.abs;
 
@@ -99,16 +105,18 @@ public class PaintController {
 
     public void canvasMouseReleased(MouseEvent mouseEvent) throws DaoException {
         end = parsePoint(mouseEvent);
-        shape = (Shape) shape.clone();
-        prepareShapeAppearance(shape);
         switch (state) {
             case CREATE:
+                shape = (Shape) shape.clone();
+                prepareShapeAppearance(shape);
                 generateShape(shape, base, end);
                 canvas.draw(shape);
                 shape.save();
                 break;
             case SELECT:
                 shape = canvas.selectedShape(mouseEvent);
+                if (shape == null)
+                    return;
                 shape.setStroke(pickColor().toString());
                 canvas.changeColor(shape);
                 shape.update();

@@ -3,6 +3,7 @@ package main.model;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
+import main.model.model.shape.Shape;
 
 import java.util.HashSet;
 import java.util.List;
@@ -65,10 +66,11 @@ public class Canvas {
             }
         }
         return candidate;
-
     }
 
     public void changeColor(Shape shape) {
+        shape.clear(canvas.getGraphicsContext2D());
+        canvas.getGraphicsContext2D().setStroke(Paint.valueOf(shape.getStroke()));
         shape.draw(canvas.getGraphicsContext2D());
     }
 }

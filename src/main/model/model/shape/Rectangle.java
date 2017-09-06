@@ -1,8 +1,10 @@
-package main.model;
+package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import main.dao.Dao;
 import main.dao.RectangleDao;
+import main.model.User;
 
 public class Rectangle extends Shape {
 
@@ -47,17 +49,12 @@ public class Rectangle extends Shape {
     }
 
     public Rectangle(User user) {
-        super(new RectangleDao(user), user);
+        super(user);
     }
 
     @Override
     public void draw(GraphicsContext gc) {
         gc.strokeRect(getX(), getY(), getWidth(), getHeight());
-    }
-
-    @Override
-    public void clear(GraphicsContext gc) {
-        gc.clearRect(getX(), getY(), getWidth(), getHeight());
     }
 
     @Override
@@ -71,6 +68,11 @@ public class Rectangle extends Shape {
     @Override
     public Point2D center() {
         return new Point2D(x + width / 2, y + height / 2);
+    }
+
+    @Override
+    public Dao dao() {
+        return new RectangleDao(getUser());
     }
 
 }

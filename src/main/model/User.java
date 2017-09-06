@@ -1,5 +1,6 @@
 package main.model;
 
+import main.dao.Dao;
 import main.utils.Hash;
 
 import java.util.Random;

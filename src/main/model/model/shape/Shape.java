@@ -1,22 +1,23 @@
-package main.model;
+package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import main.dao.Dao;
-import main.utils.DaoException;
+import main.model.Model;
+import main.model.User;
+import main.utils.utils.exceptions.DaoException;
 
 public abstract class Shape implements Model {
 
     private int identifier;
     private User user;
     private String stroke;
-    private Dao dao;
 
     public Shape() {
     }
 
-    public Shape(Dao dao, User user) {
-        this.dao = dao;
+    public Shape(User user) {
         this.user = user;
     }
 
@@ -47,19 +48,24 @@ public abstract class Shape implements Model {
     }
 
     public void save() throws DaoException {
-        dao.create(this);
+        dao().create(this);
     }
 
     public abstract void draw(GraphicsContext gc);
 
-    public abstract void clear(GraphicsContext gc);
+    public void clear(GraphicsContext gc) {
+        gc.setStroke(Color.WHITE);
+        draw(gc);
+    }
 
     public abstract boolean contains(Point2D point);
 
     public abstract Point2D center();
 
+    public abstract Dao dao();
+
     public void update() throws DaoException {
-        dao.update(this);
+        dao().update(this);
     }
 
     @Override

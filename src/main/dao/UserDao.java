@@ -1,7 +1,7 @@
 package main.dao;
 
 import main.model.User;
-import main.utils.DaoException;
+import main.utils.utils.exceptions.DaoException;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 

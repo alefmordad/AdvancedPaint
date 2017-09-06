@@ -2,30 +2,21 @@ package main.dao;
 
 import main.model.Model;
 import main.model.User;
-import main.utils.DaoException;
+import main.utils.utils.exceptions.DaoException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
 public abstract class Dao<T extends Model> {
 
-    private final SessionFactory sessionFactory;
-    final Session session;
+    protected Session session = SessionBuilder.getSession();
     Transaction transaction;
     Class aClass;
     private User user;
 
-    {
-        Configuration configuration = new Configuration();
-        configuration.configure();
-        sessionFactory = configuration.buildSessionFactory();
-        session = sessionFactory.openSession();
-    }
 
     Dao(Class aClass) {
         this.aClass = aClass;
@@ -80,7 +71,6 @@ public abstract class Dao<T extends Model> {
             session.update(t);
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace();
             transaction.rollback();
             throw new DaoException();
         }
@@ -89,7 +79,6 @@ public abstract class Dao<T extends Model> {
     @Override
     protected void finalize() throws Throwable {
         session.close();
-        sessionFactory.close();
         super.finalize();
     }
 

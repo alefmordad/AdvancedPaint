@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="main.model.Circle">
+    <class name="main.model.model.shape.Circle">
         <id name="identifier" type="int">
             <generator class="increment"/>
         </id>

@@ -1,8 +1,10 @@
-package main.model;
+package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import main.dao.CircleDao;
+import main.dao.Dao;
+import main.model.User;
 
 public class Circle extends Shape {
 
@@ -14,7 +16,7 @@ public class Circle extends Shape {
     }
 
     public Circle(User user) {
-        super(new CircleDao(user), user);
+        super(user);
     }
 
     public double getCenterX() {
@@ -47,11 +49,6 @@ public class Circle extends Shape {
     }
 
     @Override
-    public void clear(GraphicsContext gc) {
-        gc.clearRect(getCenterX() - getRadius(), getCenterY() - getRadius(), getRadius() * 2, getRadius() * 2);
-    }
-
-    @Override
     public boolean contains(Point2D point) {
         return (point.distance(new Point2D(centerX, centerY)) <= radius);
     }
@@ -59,6 +56,11 @@ public class Circle extends Shape {
     @Override
     public Point2D center() {
         return new Point2D(centerX, centerY);
+    }
+
+    @Override
+    public Dao dao() {
+        return new CircleDao(getUser());
     }
 
 }

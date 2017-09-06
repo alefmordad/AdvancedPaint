@@ -1,8 +1,10 @@
-package main.model;
+package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import main.dao.Dao;
 import main.dao.LineDao;
+import main.model.User;
 
 public class Line extends Shape {
 
@@ -15,7 +17,7 @@ public class Line extends Shape {
     }
 
     public Line(User user) {
-        super(new LineDao(user), user);
+        super(user);
     }
 
     public double getStartX() {
@@ -56,14 +58,6 @@ public class Line extends Shape {
     }
 
     @Override
-    public void clear(GraphicsContext gc) {
-        double width = Math.abs(startX - endX);
-        double height = Math.abs(startY - endY);
-        Point2D rectangleStartPoint = topLeftOf(new Point2D(startX, startY), new Point2D(endX, endY));
-        gc.clearRect(rectangleStartPoint.getX(), rectangleStartPoint.getY(), width, height);
-    }
-
-    @Override
     public boolean contains(Point2D point) {
         double width = Math.abs(startX - endX);
         double height = Math.abs(startY - endY);
@@ -79,6 +73,11 @@ public class Line extends Shape {
     @Override
     public Point2D center() {
         return new Point2D((startX + endX) / 2, (startY + startY) / 2);
+    }
+
+    @Override
+    public Dao dao() {
+        return new LineDao(getUser());
     }
 
     private static Point2D topLeftOf(Point2D base, Point2D end) {

@@ -12,7 +12,7 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="main.model.User"/>
-        <mapping resource="User.hbm.xml"/>
+        <mapping resource="hibernate/User.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

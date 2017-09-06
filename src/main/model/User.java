@@ -4,10 +4,11 @@ import main.utils.Hash;
 
 import java.util.Random;
 
-public class User extends Model {
+public class User implements Model {
 
     private static final Random random = new Random();
 
+    private int identifier;
     private String username;
     private String password;
     private int salt;
@@ -29,6 +30,16 @@ public class User extends Model {
 
     private void calculatePassword(String password) {
         this.password = Hash.getMD5String(password + String.valueOf(salt));
+    }
+
+    @Override
+    public int getIdentifier() {
+        return identifier;
+    }
+
+    @Override
+    public void setIdentifier(int id) {
+        this.identifier = id;
     }
 
     public int getSalt() {

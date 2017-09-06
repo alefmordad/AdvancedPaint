@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.controller.PaintController;
 import main.model.User;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class Paint extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Paint.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Paint.fxml"));
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Hello '" + user.getUsername() + "'");
         primaryStage.setOnCloseRequest(t -> System.exit(0));

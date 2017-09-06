@@ -15,14 +15,14 @@ import static main.utils.Constants.*;
 
 public class LoginController {
 
-    private User user;
-    private final UserDao userDAO = new UserDao();
-
     @FXML
     TextField txtUsername;
 
     @FXML
     PasswordField txtPassword;
+
+    private User user;
+    private final UserDao userDAO = new UserDao();
 
     public void register() {
         try {
@@ -46,11 +46,9 @@ public class LoginController {
             user = userDAO.get(user);
             User otherUser = new User(txtUsername.getText(), txtPassword.getText(), user.getSalt());
             if (otherUser.equals(user)) {
-                Stage stage  = (Stage) txtUsername.getScene().getWindow();
-                stage.close();
+                ((Stage) txtUsername.getScene().getWindow()).close();
                 new Paint(user).start(new Stage());
-            }
-            else
+            } else
                 Dialogue.error(WRONG_PASSWORD);
         } catch (EmptyFieldException e) {
             Dialogue.error(e.getMessage());

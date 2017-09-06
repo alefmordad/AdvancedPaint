@@ -10,7 +10,7 @@ import main.dao.CircleDao;
 import main.dao.LineDao;
 import main.dao.RectangleDao;
 import main.model.Canvas;
-import main.model.State;
+import main.model.UsageState;
 import main.model.User;
 import main.model.model.shape.Circle;
 import main.model.model.shape.Line;
@@ -46,7 +46,7 @@ public class PaintController {
     Button btnClear;
 
     private Shape shape;
-    private State state;
+    private UsageState state;
     private Point2D base;
     private Point2D end;
     private Canvas canvas;
@@ -69,7 +69,7 @@ public class PaintController {
     }
 
     public void changeColorClicked() {
-        state = State.SELECT;
+        state = UsageState.SELECT;
     }
 
     public void zoomInClicked() {
@@ -85,17 +85,17 @@ public class PaintController {
     }
 
     public void circleClicked() {
-        state = State.CREATE;
+        state = UsageState.CREATE;
         shape = new Circle(user);
     }
 
     public void rectangleClicked() {
-        state = State.CREATE;
+        state = UsageState.CREATE;
         shape = new Rectangle(user);
     }
 
     public void lineClicked() {
-        state = State.CREATE;
+        state = UsageState.CREATE;
         shape = new Line(user);
     }
 
@@ -127,9 +127,9 @@ public class PaintController {
     public void clearClicked() {
         canvas.clear();
         try {
-            circleDao.clear();
-            rectangleDao.clear();
-            lineDao.clear();
+            circleDao.clearFromUser();
+            rectangleDao.clearFromUser();
+            lineDao.clearFromUser();
         } catch (DaoException e) {
         }
     }
@@ -170,7 +170,7 @@ public class PaintController {
     }
 
     private void initializeFields() {
-        state = State.CREATE;
+        state = UsageState.CREATE;
         shape = new Circle(user);
         base = new Point2D(0, 0);
         end = new Point2D(0, 0);

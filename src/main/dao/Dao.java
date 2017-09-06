@@ -6,13 +6,12 @@ import main.utils.utils.exceptions.DaoException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
 public abstract class Dao<T extends Model> {
 
-    protected Session session = SessionBuilder.getSession();
+    protected Session session = Hibernate.getSession();
     Transaction transaction;
     Class aClass;
     private User user;
@@ -24,6 +23,14 @@ public abstract class Dao<T extends Model> {
 
     Dao(Class aClass, User user) {
         this.aClass = aClass;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -42,7 +49,6 @@ public abstract class Dao<T extends Model> {
         transaction = session.beginTransaction();
         try {
             Criteria criteria = session.createCriteria(aClass);
-            criteria.add(Restrictions.eq("user", user));
             return criteria.list();
         } catch (Exception e) {
             throw new DaoException();
@@ -55,7 +61,6 @@ public abstract class Dao<T extends Model> {
         transaction = session.beginTransaction();
         try {
             Criteria criteria = session.createCriteria(aClass);
-            criteria.add(Restrictions.eq("user", user));
             for (Object t : criteria.list())
                 session.delete(t);
             transaction.commit();
@@ -69,6 +74,17 @@ public abstract class Dao<T extends Model> {
         transaction = session.beginTransaction();
         try {
             session.update(t);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            throw new DaoException();
+        }
+    }
+
+    public void delete(T t) throws DaoException {
+        transaction = session.beginTransaction();
+        try {
+            session.delete(t);
             transaction.commit();
         } catch (Exception e) {
             transaction.rollback();

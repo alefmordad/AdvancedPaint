@@ -1,10 +1,9 @@
 package main.dao;
 
-import main.model.model.shape.Rectangle;
-import main.model.model.shape.Shape;
 import main.model.User;
+import main.model.model.shape.Rectangle;
 
-public class RectangleDao extends Dao<Shape> {
+public class RectangleDao extends ShapeDao<Rectangle> {
 
     public RectangleDao(User user) {
         super(Rectangle.class, user);

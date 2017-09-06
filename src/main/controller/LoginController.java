@@ -19,7 +19,6 @@ public class LoginController {
 
     @FXML
     TextField txtUsername;
-
     @FXML
     PasswordField txtPassword;
 

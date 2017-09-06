@@ -6,8 +6,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.dao.UserDao;
 import main.model.User;
-import main.utils.utils.exceptions.DaoException;
 import main.utils.Dialogue;
+import main.utils.utils.exceptions.DaoException;
 import main.utils.utils.exceptions.EmptyFieldException;
 import main.view.Paint;
 

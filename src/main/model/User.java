@@ -1,6 +1,5 @@
 package main.model;
 
-import main.dao.Dao;
 import main.utils.Hash;
 
 import java.util.Random;
@@ -8,7 +7,6 @@ import java.util.Random;
 public class User implements Model {
 
     private static final Random random = new Random();
-
     private int identifier;
     private String username;
     private String password;
@@ -27,10 +25,6 @@ public class User implements Model {
         this.username = username;
         this.salt = salt;
         calculatePassword(password);
-    }
-
-    private void calculatePassword(String password) {
-        this.password = Hash.getMD5String(password + String.valueOf(salt));
     }
 
     @Override
@@ -86,5 +80,9 @@ public class User implements Model {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + salt;
         return result;
+    }
+
+    private void calculatePassword(String password) {
+        this.password = Hash.getMD5String(password + String.valueOf(salt));
     }
 }

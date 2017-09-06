@@ -2,8 +2,8 @@ package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import main.dao.CircleDao;
-import main.dao.Dao;
+import main.model.dao.CircleDao;
+import main.model.dao.Dao;
 import main.model.User;
 
 public class Circle extends Shape {

@@ -1,8 +1,8 @@
 package dao;
 
-import main.dao.UserDao;
+import main.model.dao.UserDao;
 import main.model.User;
-import main.utils.utils.exceptions.DaoException;
+import main.controller.utils.utils.exceptions.DaoException;
 import org.junit.Test;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package main.utils;
+package main.controller.utils;
 
 public class Constants {
 

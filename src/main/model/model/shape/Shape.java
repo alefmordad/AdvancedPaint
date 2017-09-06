@@ -3,10 +3,10 @@ package main.model.model.shape;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import main.dao.Dao;
+import main.model.dao.Dao;
 import main.model.Model;
 import main.model.User;
-import main.utils.utils.exceptions.DaoException;
+import main.controller.utils.utils.exceptions.DaoException;
 
 public abstract class Shape implements Model {
 

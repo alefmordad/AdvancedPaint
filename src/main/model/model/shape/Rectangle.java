@@ -2,8 +2,8 @@ package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import main.dao.Dao;
-import main.dao.RectangleDao;
+import main.model.dao.Dao;
+import main.model.dao.RectangleDao;
 import main.model.User;
 
 public class Rectangle extends Shape {

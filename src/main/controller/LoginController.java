@@ -4,16 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.dao.UserDao;
+import main.model.dao.UserDao;
 import main.model.User;
-import main.utils.Dialogue;
-import main.utils.utils.exceptions.DaoException;
-import main.utils.utils.exceptions.EmptyFieldException;
+import main.controller.utils.Dialogue;
+import main.controller.utils.utils.exceptions.DaoException;
+import main.controller.utils.utils.exceptions.EmptyFieldException;
 import main.view.Paint;
 
 import java.io.IOException;
 
-import static main.utils.Constants.*;
+import static main.controller.utils.Constants.*;
 
 public class LoginController {
 

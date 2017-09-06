@@ -1,4 +1,4 @@
-package main.dao;
+package main.model.dao;
 
 import main.model.User;
 import main.model.model.shape.Line;

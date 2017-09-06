@@ -6,9 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import main.dao.CircleDao;
-import main.dao.LineDao;
-import main.dao.RectangleDao;
+import main.model.dao.CircleDao;
+import main.model.dao.LineDao;
+import main.model.dao.RectangleDao;
 import main.model.Canvas;
 import main.model.UsageState;
 import main.model.User;
@@ -16,7 +16,7 @@ import main.model.model.shape.Circle;
 import main.model.model.shape.Line;
 import main.model.model.shape.Rectangle;
 import main.model.model.shape.Shape;
-import main.utils.utils.exceptions.DaoException;
+import main.controller.utils.utils.exceptions.DaoException;
 
 import static java.lang.Math.abs;
 

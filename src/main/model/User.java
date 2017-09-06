@@ -1,6 +1,6 @@
 package main.model;
 
-import main.utils.Hash;
+import main.controller.utils.Hash;
 
 import java.util.Random;
 

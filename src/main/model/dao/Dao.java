@@ -1,8 +1,8 @@
-package main.dao;
+package main.model.dao;
 
 import main.model.Model;
 import main.model.User;
-import main.utils.utils.exceptions.DaoException;
+import main.controller.utils.utils.exceptions.DaoException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

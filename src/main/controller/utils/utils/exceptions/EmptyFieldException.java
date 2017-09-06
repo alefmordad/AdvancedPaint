@@ -1,4 +1,4 @@
-package main.utils.utils.exceptions;
+package main.controller.utils.utils.exceptions;
 
 public class EmptyFieldException extends Exception {
 

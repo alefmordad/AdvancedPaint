@@ -2,8 +2,8 @@ package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import main.dao.Dao;
-import main.dao.LineDao;
+import main.model.dao.Dao;
+import main.model.dao.LineDao;
 import main.model.User;
 
 public class Line extends Shape {

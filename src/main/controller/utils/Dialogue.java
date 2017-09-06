@@ -1,7 +1,7 @@
-package main.utils;
+package main.controller.utils;
 
 import javafx.scene.control.Alert;
-import main.utils.utils.exceptions.EmptyFieldException;
+import main.controller.utils.utils.exceptions.EmptyFieldException;
 
 public class Dialogue {
 

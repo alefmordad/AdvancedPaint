@@ -1,5 +1,7 @@
 package main.model;
 
+import javafx.geometry.Point2D;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Paint;
 
 import java.util.HashSet;
@@ -47,7 +49,26 @@ public class Canvas {
     }
 
     public void clear() {
-        shapes.clear();
         canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        shapes.clear();
+    }
+
+    public Shape selectedShape(MouseEvent mouseEvent) {
+        Shape candidate = null;
+        Point2D ePoint = new Point2D(mouseEvent.getX(), mouseEvent.getY());
+        for (Shape shape : shapes) {
+            if (shape.contains(ePoint)) {
+                if (candidate == null)
+                    candidate = shape;
+                else if (shape.center().distance(ePoint) < candidate.center().distance(ePoint))
+                    candidate = shape;
+            }
+        }
+        return candidate;
+
+    }
+
+    public void changeColor(Shape shape) {
+        shape.draw(canvas.getGraphicsContext2D());
     }
 }

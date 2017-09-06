@@ -1,5 +1,6 @@
 package main.model;
 
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import main.dao.Dao;
 import main.utils.DaoException;
@@ -51,4 +52,25 @@ public abstract class Shape implements Model {
 
     public abstract void draw(GraphicsContext gc);
 
+    public abstract void clear(GraphicsContext gc);
+
+    public abstract boolean contains(Point2D point);
+
+    public abstract Point2D center();
+
+    public void update() throws DaoException {
+        dao.update(this);
+    }
+
+    @Override
+    public Object clone() {
+        Shape shape;
+        if (this instanceof Rectangle)
+            shape = new Rectangle(user);
+        else if (this instanceof Line)
+            shape = new Line(user);
+        else
+            shape = new Circle(user);
+        return shape;
+    }
 }

@@ -1,5 +1,6 @@
 package main.model;
 
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import main.dao.RectangleDao;
 
@@ -52,6 +53,24 @@ public class Rectangle extends Shape {
     @Override
     public void draw(GraphicsContext gc) {
         gc.strokeRect(getX(), getY(), getWidth(), getHeight());
+    }
+
+    @Override
+    public void clear(GraphicsContext gc) {
+        gc.clearRect(getX(), getY(), getWidth(), getHeight());
+    }
+
+    @Override
+    public boolean contains(Point2D point) {
+        if (point.getX() >= getX() && point.getX() <= getX() + width)
+            if (point.getY() >= getY() && point.getY() <= getY() + height)
+                return true;
+        return false;
+    }
+
+    @Override
+    public Point2D center() {
+        return new Point2D(x + width / 2, y + height / 2);
     }
 
 }

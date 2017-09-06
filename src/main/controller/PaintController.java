@@ -29,6 +29,8 @@ public class PaintController {
     @FXML
     Button btnLine;
     @FXML
+    Button btnChangeColor;
+    @FXML
     Button btnZoomIn;
     @FXML
     Button btnZoomOut;
@@ -58,6 +60,10 @@ public class PaintController {
 
     public void loadClicked() {
         initialize();
+    }
+
+    public void changeColorClicked() {
+        state = State.SELECT;
     }
 
     public void zoomInClicked() {
@@ -93,12 +99,19 @@ public class PaintController {
 
     public void canvasMouseReleased(MouseEvent mouseEvent) throws DaoException {
         end = parsePoint(mouseEvent);
+        shape = (Shape) shape.clone();
         prepareShapeAppearance(shape);
         switch (state) {
             case CREATE:
                 generateShape(shape, base, end);
                 canvas.draw(shape);
                 shape.save();
+                break;
+            case SELECT:
+                shape = canvas.selectedShape(mouseEvent);
+                shape.setStroke(pickColor().toString());
+                canvas.changeColor(shape);
+                shape.update();
                 break;
         }
     }
@@ -165,6 +178,7 @@ public class PaintController {
         btnCircle.setDisable(false);
         btnRectangle.setDisable(false);
         btnLine.setDisable(false);
+        btnChangeColor.setDisable(false);
         btnZoomIn.setDisable(false);
         btnZoomOut.setDisable(false);
         btnResetZoom.setDisable(false);
@@ -179,7 +193,6 @@ public class PaintController {
             canvas.draw(rectangleDao.getAll());
             canvas.draw(lineDao.getAll());
         } catch (DaoException e) {
-            e.printStackTrace();
         }
     }
 

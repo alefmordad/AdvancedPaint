@@ -1,5 +1,6 @@
 package main.model;
 
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import main.dao.CircleDao;
 
@@ -43,6 +44,21 @@ public class Circle extends Shape {
     @Override
     public void draw(GraphicsContext gc) {
         gc.strokeOval(getCenterX() - getRadius(), getCenterY() - getRadius(), getRadius() * 2, getRadius() * 2);
+    }
+
+    @Override
+    public void clear(GraphicsContext gc) {
+        gc.clearRect(getCenterX() - getRadius(), getCenterY() - getRadius(), getRadius() * 2, getRadius() * 2);
+    }
+
+    @Override
+    public boolean contains(Point2D point) {
+        return (point.distance(new Point2D(centerX, centerY)) <= radius);
+    }
+
+    @Override
+    public Point2D center() {
+        return new Point2D(centerX, centerY);
     }
 
 }

@@ -54,7 +54,6 @@ public abstract class Dao<T extends Model> {
             criteria.add(Restrictions.eq("user", user));
             return criteria.list();
         } catch (Exception e) {
-            e.printStackTrace();
             throw new DaoException();
         } finally {
             transaction.commit();
@@ -70,6 +69,18 @@ public abstract class Dao<T extends Model> {
                 session.delete(t);
             transaction.commit();
         } catch (Exception e) {
+            transaction.rollback();
+            throw new DaoException();
+        }
+    }
+
+    public void update(T t) throws DaoException {
+        transaction = session.beginTransaction();
+        try {
+            session.update(t);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
             transaction.rollback();
             throw new DaoException();
         }

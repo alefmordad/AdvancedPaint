@@ -10,18 +10,21 @@
     <children>
         <Pane layoutX="11.0" layoutY="14.0" prefHeight="373.0" prefWidth="443.0" style="-fx-border-color: black;">
             <children>
-                <Canvas fx:id="jfxCanvas" height="373.0" onMousePressed="#canvasMousePressed" onMouseReleased="#canvasMouseReleased" width="443.0" />
+                <Canvas fx:id="jfxCanvas" disable="true" height="373.0" onMousePressed="#canvasMousePressed" onMouseReleased="#canvasMouseReleased" width="443.0" />
             </children>
         </Pane>
-        <ColorPicker fx:id="colorPicker" editable="true" layoutX="461.0" layoutY="116.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+        <ColorPicker fx:id="colorPicker" disable="true" editable="true" layoutX="480.0" layoutY="116.0" prefHeight="25.0" prefWidth="94.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
             <value>
                 <Color blue="0" green="0" red="0" />
             </value>
         </ColorPicker>
-        <Button layoutX="486.0" layoutY="14.0" mnemonicParsing="false" onAction="#circleClicked" prefHeight="25.0" prefWidth="68.0" text="Circle" />
-        <Button layoutX="486.0" layoutY="45.0" mnemonicParsing="false" onAction="#rectangleClicked" text="Rectangle" />
-        <Button layoutX="486.0" layoutY="76.0" mnemonicParsing="false" onAction="#lineClicked" prefHeight="25.0" prefWidth="68.0" text="Line" />
-      <Button layoutX="486.0" layoutY="362.0" mnemonicParsing="false" onAction="#clearClicked" prefHeight="25.0" prefWidth="68.0" text="Clear" />
-      <Button fx:id="btnLoad" layoutX="486.0" layoutY="331.0" mnemonicParsing="false" onAction="#loadClicked" prefHeight="25.0" prefWidth="68.0" text="Load" />
+        <Button fx:id="btnCircle" disable="true" layoutX="480.0" layoutY="14.0" mnemonicParsing="false" onAction="#circleClicked" prefHeight="25.0" prefWidth="94.0" text="Circle" />
+        <Button fx:id="btnRectangle" disable="true" layoutX="480.0" layoutY="45.0" mnemonicParsing="false" onAction="#rectangleClicked" prefHeight="25.0" prefWidth="94.0" text="Rectangle" />
+        <Button fx:id="btnLine" disable="true" layoutX="480.0" layoutY="76.0" mnemonicParsing="false" onAction="#lineClicked" prefHeight="25.0" prefWidth="94.0" text="Line" />
+      <Button fx:id="btnZoomIn" disable="true" layoutX="479.0" layoutY="239.0" mnemonicParsing="false" onAction="#zoomInClicked" prefHeight="25.0" prefWidth="28.0" text="+" />
+      <Button fx:id="btnZoomOut" disable="true" layoutX="547.0" layoutY="239.0" mnemonicParsing="false" onAction="#zoomOutClicked" prefHeight="25.0" prefWidth="28.0" text="-" />
+      <Button fx:id="btnClear" disable="true" layoutX="480.0" layoutY="361.0" mnemonicParsing="false" onAction="#clearClicked" prefHeight="25.0" prefWidth="94.0" text="Clear" />
+      <Button fx:id="btnLoad" layoutX="480.0" layoutY="328.0" mnemonicParsing="false" onAction="#loadClicked" prefHeight="25.0" prefWidth="94.0" text="Load" />
+      <Button fx:id="btnResetZoom" disable="true" layoutX="479.0" layoutY="269.0" mnemonicParsing="false" onAction="#zoomResetClicked" prefHeight="25.0" prefWidth="94.0" text="Reset Zoom" />
     </children>
 </Pane>

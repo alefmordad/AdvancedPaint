@@ -10,9 +10,30 @@ public class Canvas {
 
     private javafx.scene.canvas.Canvas canvas;
     private Set<Shape> shapes = new HashSet<>();
+    private double scale = 1;
 
     public Canvas(javafx.scene.canvas.Canvas canvas) {
         this.canvas = canvas;
+    }
+
+    public void zoomIn() {
+        scale *= 1.1;
+        setXYScale();
+    }
+
+    public void zoomOut() {
+        scale /= 1.1;
+        setXYScale();
+    }
+
+    public void resetZoom() {
+        scale = 1;
+        setXYScale();
+    }
+
+    private void setXYScale() {
+        canvas.setScaleX(scale);
+        canvas.setScaleY(scale);
     }
 
     public void draw(Shape shape) {

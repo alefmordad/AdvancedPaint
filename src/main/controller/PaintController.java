@@ -18,12 +18,24 @@ public class PaintController {
 
     @FXML
     ColorPicker colorPicker;
-
     @FXML
     javafx.scene.canvas.Canvas jfxCanvas;
-
     @FXML
     Button btnLoad;
+    @FXML
+    Button btnCircle;
+    @FXML
+    Button btnRectangle;
+    @FXML
+    Button btnLine;
+    @FXML
+    Button btnZoomIn;
+    @FXML
+    Button btnZoomOut;
+    @FXML
+    Button btnResetZoom;
+    @FXML
+    Button btnClear;
 
     private Shape shape;
     private State state;
@@ -48,6 +60,18 @@ public class PaintController {
         initialize();
     }
 
+    public void zoomInClicked() {
+        canvas.zoomIn();
+    }
+
+    public void zoomOutClicked() {
+        canvas.zoomOut();
+    }
+
+    public void zoomResetClicked() {
+        canvas.resetZoom();
+    }
+
     public void circleClicked() {
         state = State.CREATE;
         shape = new Circle(user);
@@ -64,12 +88,10 @@ public class PaintController {
     }
 
     public void canvasMousePressed(MouseEvent mouseEvent) {
-        initialize();
         base = parsePoint(mouseEvent);
     }
 
     public void canvasMouseReleased(MouseEvent mouseEvent) throws DaoException {
-        initialize();
         end = parsePoint(mouseEvent);
         prepareShapeAppearance(shape);
         switch (state) {
@@ -119,18 +141,36 @@ public class PaintController {
 
     private void initialize() {
         if (!isInitialized) {
-            isInitialized = true;
-            btnLoad.setText("Loaded");
-            state = State.CREATE;
-            shape = new Circle(user);
-            base = new Point2D(0, 0);
-            end = new Point2D(0, 0);
-            circleDao = new CircleDao(user);
-            rectangleDao = new RectangleDao(user);
-            lineDao = new LineDao(user);
-            canvas = new Canvas(jfxCanvas);
+            enableComponents();
+            initializeFields();
             loadShapes();
+            isInitialized = true;
         }
+    }
+
+    private void initializeFields() {
+        state = State.CREATE;
+        shape = new Circle(user);
+        base = new Point2D(0, 0);
+        end = new Point2D(0, 0);
+        circleDao = new CircleDao(user);
+        rectangleDao = new RectangleDao(user);
+        lineDao = new LineDao(user);
+        canvas = new Canvas(jfxCanvas);
+    }
+
+    private void enableComponents() {
+        btnLoad.setText("Load Done");
+        btnLoad.setDisable(true);
+        btnCircle.setDisable(false);
+        btnRectangle.setDisable(false);
+        btnLine.setDisable(false);
+        btnZoomIn.setDisable(false);
+        btnZoomOut.setDisable(false);
+        btnResetZoom.setDisable(false);
+        btnClear.setDisable(false);
+        colorPicker.setDisable(false);
+        jfxCanvas.setDisable(false);
     }
 
     private void loadShapes() {

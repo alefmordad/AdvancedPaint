@@ -2,9 +2,9 @@ package main.controller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import main.dao.CircleDao;
 import main.dao.LineDao;
@@ -21,6 +21,9 @@ public class PaintController {
 
     @FXML
     javafx.scene.canvas.Canvas jfxCanvas;
+
+    @FXML
+    Button btnLoad;
 
     private Shape shape;
     private State state;
@@ -42,10 +45,7 @@ public class PaintController {
     }
 
     public void loadClicked() {
-        if (!isInitialized) {
-            initialize();
-            isInitialized = true;
-        }
+        initialize();
     }
 
     public void circleClicked() {
@@ -64,10 +64,12 @@ public class PaintController {
     }
 
     public void canvasMousePressed(MouseEvent mouseEvent) {
+        initialize();
         base = parsePoint(mouseEvent);
     }
 
     public void canvasMouseReleased(MouseEvent mouseEvent) throws DaoException {
+        initialize();
         end = parsePoint(mouseEvent);
         prepareShapeAppearance(shape);
         switch (state) {
@@ -116,15 +118,19 @@ public class PaintController {
     }
 
     private void initialize() {
-        state = State.CREATE;
-        shape = new Circle(user);
-        base = new Point2D(0, 0);
-        end = new Point2D(0, 0);
-        circleDao = new CircleDao(user);
-        rectangleDao = new RectangleDao(user);
-        lineDao = new LineDao(user);
-        canvas = new Canvas(jfxCanvas);
-        loadShapes();
+        if (!isInitialized) {
+            isInitialized = true;
+            btnLoad.setText("Loaded");
+            state = State.CREATE;
+            shape = new Circle(user);
+            base = new Point2D(0, 0);
+            end = new Point2D(0, 0);
+            circleDao = new CircleDao(user);
+            rectangleDao = new RectangleDao(user);
+            lineDao = new LineDao(user);
+            canvas = new Canvas(jfxCanvas);
+            loadShapes();
+        }
     }
 
     private void loadShapes() {

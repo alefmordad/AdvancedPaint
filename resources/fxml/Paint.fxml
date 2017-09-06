@@ -22,6 +22,6 @@
         <Button layoutX="486.0" layoutY="45.0" mnemonicParsing="false" onAction="#rectangleClicked" text="Rectangle" />
         <Button layoutX="486.0" layoutY="76.0" mnemonicParsing="false" onAction="#lineClicked" prefHeight="25.0" prefWidth="68.0" text="Line" />
       <Button layoutX="486.0" layoutY="362.0" mnemonicParsing="false" onAction="#clearClicked" prefHeight="25.0" prefWidth="68.0" text="Clear" />
-      <Button layoutX="486.0" layoutY="331.0" mnemonicParsing="false" onAction="#loadClicked" prefHeight="25.0" prefWidth="68.0" text="Load" />
+      <Button fx:id="btnLoad" layoutX="486.0" layoutY="331.0" mnemonicParsing="false" onAction="#loadClicked" prefHeight="25.0" prefWidth="68.0" text="Load" />
     </children>
 </Pane>

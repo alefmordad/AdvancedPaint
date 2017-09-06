@@ -27,6 +27,6 @@ public class Canvas {
 
     public void clear() {
         shapes.clear();
-        canvas.getGraphicsContext2D().restore();
+        canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
 }

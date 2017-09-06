@@ -68,18 +68,18 @@ public class User implements Model {
 
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                '}';
+        return "User{" + "username='" + username + '\'' + '}';
+    }
+
+    public void print() {
+        System.out.println(identifier + " " + username + " " + salt);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         User user = (User) o;
-
         return salt == user.salt && (username != null ? username.equals(user.username) : user.username == null) && (password != null ? password.equals(user.password) : user.password == null);
     }
 

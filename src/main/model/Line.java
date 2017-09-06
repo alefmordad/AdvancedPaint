@@ -1,35 +1,52 @@
 package main.model;
 
 import javafx.scene.canvas.GraphicsContext;
+import main.dao.LineDao;
 
-public class Line extends javafx.scene.shape.Line implements Shape {
+public class Line extends Shape {
 
-    private int identifier;
-    private User user;
+    private double startX;
+    private double startY;
+    private double endX;
+    private double endY;
 
     public Line() {
     }
 
     public Line(User user) {
-        this.user = user;
+        super(new LineDao(), user);
     }
 
-    @Override
-    public User getUser() {
-        return user;
+    public double getStartX() {
+        return startX;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setStartX(double startX) {
+        this.startX = startX;
     }
 
-    @Override
-    public int getIdentifier() {
-        return identifier;
+    public double getStartY() {
+        return startY;
     }
 
-    public void setIdentifier(int id) {
-        this.identifier = id;
+    public void setStartY(double startY) {
+        this.startY = startY;
+    }
+
+    public double getEndX() {
+        return endX;
+    }
+
+    public void setEndX(double endX) {
+        this.endX = endX;
+    }
+
+    public double getEndY() {
+        return endY;
+    }
+
+    public void setEndY(double endY) {
+        this.endY = endY;
     }
 
     @Override

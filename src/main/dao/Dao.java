@@ -31,6 +31,7 @@ public abstract class Dao<T extends Model> {
             session.save(t);
             transaction.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             transaction.rollback();
             throw new DaoException();
         }

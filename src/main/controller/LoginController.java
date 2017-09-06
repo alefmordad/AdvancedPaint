@@ -30,7 +30,7 @@ public class LoginController {
         try {
             parseUserInfo();
             userDAO.create(user);
-            Dialogue.error(user + USER_SUCCESSFULLY_ADDED);
+            Dialogue.info(user + USER_SUCCESSFULLY_ADDED);
         } catch (EmptyFieldException e) {
             Dialogue.error(e.getMessage());
         } catch (DaoException e) {

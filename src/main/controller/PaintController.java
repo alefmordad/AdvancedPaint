@@ -23,17 +23,13 @@ public class PaintController {
     private Point2D end;
     private Canvas canvas;
     private User user;
-    private boolean isInitialized;
+    private boolean isInitialized = false;
 
-    {
-        state = State.CREATE;
-        shape = new Circle(user);
-        base = new Point2D(0, 0);
-        end = new Point2D(0, 0);
-        isInitialized = false;
+    public User getUser() {
+        return user;
     }
 
-    public PaintController(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -98,6 +94,10 @@ public class PaintController {
     }
 
     private void initialize() {
+        state = State.CREATE;
+        shape = new Circle(user);
+        base = new Point2D(0, 0);
+        end = new Point2D(0, 0);
         canvas = new Canvas(jfxCanvas);
     }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="main.model.Circle">
+        <id name="identifier" type="int">
+            <generator class="increment"/>
+        </id>
+        <property name="centerX" type="double" not-null="true"/>
+        <property name="centerY" type="double" not-null="true"/>
+        <property name="radius" type="double" not-null="true"/>
+
+        <many-to-one name="user" not-null="true" cascade="save-update" lazy="false"/>
+    </class>
+</hibernate-mapping>

@@ -20,7 +20,11 @@ public class Paint extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Paint.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Paint.fxml"));
+//        fxmlLoader.setController(new PaintController());
+        //Parent root = FXMLLoader.load(getClass().getResource("/fxml/Paint.fxml"));
+        Parent root = fxmlLoader.load();
+        ((PaintController) fxmlLoader.getController()).setUser(user);
         primaryStage.setScene(new Scene(root));
         primaryStage.setTitle("Hello '" + user.getUsername() + "'");
         primaryStage.setOnCloseRequest(t -> System.exit(0));

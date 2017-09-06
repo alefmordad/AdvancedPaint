@@ -1,5 +1,7 @@
 package main.model;
 
+import main.utils.DaoException;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,5 +18,10 @@ public class Canvas {
         shapes.add(shape);
         canvas.getGraphicsContext2D().setStroke(shape.getStroke());
         shape.draw(canvas.getGraphicsContext2D());
+        try {
+            shape.save();
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
     }
 }

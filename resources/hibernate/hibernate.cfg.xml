@@ -12,7 +12,13 @@
         <property name="hbm2ddl.auto">update</property>
 
         <mapping class="main.model.User"/>
+        <mapping class="main.model.Circle"/>
+        <mapping class="main.model.Rectangle"/>
+        <mapping class="main.model.Line"/>
         <mapping resource="hibernate/User.hbm.xml"/>
+        <mapping resource="hibernate/Circle.hbm.xml"/>
+        <mapping resource="hibernate/Rectangle.hbm.xml"/>
+        <mapping resource="hibernate/Line.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

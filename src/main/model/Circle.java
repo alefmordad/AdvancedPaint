@@ -1,40 +1,48 @@
 package main.model;
 
 import javafx.scene.canvas.GraphicsContext;
+import main.dao.CircleDao;
 
-public class Circle extends javafx.scene.shape.Circle implements Shape {
+public class Circle extends Shape {
 
-    private int identifier;
-    private User user;
+    private double centerX;
+    private double centerY;
+    private double radius;
 
     public Circle() {
     }
 
     public Circle(User user) {
-        this.user = user;
+        super(new CircleDao(), user);
     }
 
-    @Override
-    public User getUser() {
-        return user;
+    public double getCenterX() {
+        return centerX;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setCenterX(double centerX) {
+        this.centerX = centerX;
     }
 
-    @Override
-    public int getIdentifier() {
-        return identifier;
+    public double getCenterY() {
+        return centerY;
     }
 
-    @Override
-    public void setIdentifier(int id) {
-        this.identifier = id;
+    public void setCenterY(double centerY) {
+        this.centerY = centerY;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
     }
 
     @Override
     public void draw(GraphicsContext gc) {
         gc.strokeOval(getCenterX() - getRadius(), getCenterY() - getRadius(), getRadius() * 2, getRadius() * 2);
     }
+
 }

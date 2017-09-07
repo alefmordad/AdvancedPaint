@@ -8,13 +8,13 @@ import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
-public abstract class ShapeDao<T> extends Dao<Shape> {
+public abstract class ShapeDao extends Dao<Shape> {
 
     public ShapeDao(Class aClass, User user) {
         super(aClass, user);
     }
 
-    public List<T> getAllFromUser() throws DaoException {
+    public List<Shape> getAllFromUser() throws DaoException {
         transaction = session.beginTransaction();
         try {
             Criteria criteria = session.createCriteria(aClass);

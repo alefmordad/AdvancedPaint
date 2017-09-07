@@ -18,6 +18,8 @@ import main.model.model.shape.Rectangle;
 import main.model.model.shape.Shape;
 import main.controller.utils.utils.exceptions.DaoException;
 
+import java.util.List;
+
 import static java.lang.Math.abs;
 
 public class PaintController {
@@ -197,9 +199,9 @@ public class PaintController {
 
     private void loadShapes() {
         try {
-            canvas.draw(circleDao.getAll());
-            canvas.draw(rectangleDao.getAll());
-            canvas.draw(lineDao.getAll());
+            canvas.draw(circleDao.getAllFromUser());
+            canvas.draw(rectangleDao.getAllFromUser());
+            canvas.draw(lineDao.getAllFromUser());
         } catch (DaoException e) {
         }
     }

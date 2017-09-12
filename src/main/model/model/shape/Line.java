@@ -2,9 +2,11 @@ package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import main.controller.utils.Constants;
+import main.controller.utils.PointUtil;
+import main.model.User;
 import main.model.dao.Dao;
 import main.model.dao.LineDao;
-import main.model.User;
 
 public class Line extends Shape {
 
@@ -55,6 +57,17 @@ public class Line extends Shape {
     @Override
     public void draw(GraphicsContext gc) {
         gc.strokeLine(getStartX(), getStartY(), getEndX(), getEndY());
+    }
+
+    @Override
+    public void clear(GraphicsContext gc) {
+        Point2D base = new Point2D(startX, startY);
+        Point2D end = new Point2D(endX, endY);
+        Point2D topLeft = PointUtil.topLeftOf(base, end);
+        double width = Math.abs(base.getX() - end.getX());
+        double height = Math.abs(base.getY() - end.getY());
+        int strokeWidth = Constants.STROKE_WIDTH;
+        gc.clearRect(topLeft.getX() - strokeWidth, topLeft.getY() - strokeWidth, width + 2 * strokeWidth, height + 2 * strokeWidth);
     }
 
     @Override

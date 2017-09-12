@@ -2,9 +2,10 @@ package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import main.controller.utils.Constants;
+import main.model.User;
 import main.model.dao.CircleDao;
 import main.model.dao.Dao;
-import main.model.User;
 
 public class Circle extends Shape {
 
@@ -46,6 +47,12 @@ public class Circle extends Shape {
     @Override
     public void draw(GraphicsContext gc) {
         gc.strokeOval(getCenterX() - getRadius(), getCenterY() - getRadius(), getRadius() * 2, getRadius() * 2);
+    }
+
+    @Override
+    public void clear(GraphicsContext gc) {
+        int strokeWidth = Constants.STROKE_WIDTH;
+        gc.clearRect(getCenterX() - getRadius() - strokeWidth, getCenterY() - getRadius() - strokeWidth, getRadius() * 2 + 2 * strokeWidth, getRadius() * 2 + 2 * strokeWidth);
     }
 
     @Override

@@ -15,10 +15,10 @@
         <mapping class="main.model.model.shape.Circle"/>
         <mapping class="main.model.model.shape.Rectangle"/>
         <mapping class="main.model.model.shape.Line"/>
-        <mapping resource="hibernate/User.hbm.xml"/>
-        <mapping resource="hibernate/Circle.hbm.xml"/>
-        <mapping resource="hibernate/Rectangle.hbm.xml"/>
-        <mapping resource="hibernate/Line.hbm.xml"/>
+        <mapping resource="User.hbm.xml"/>
+        <mapping resource="Circle.hbm.xml"/>
+        <mapping resource="Rectangle.hbm.xml"/>
+        <mapping resource="Line.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

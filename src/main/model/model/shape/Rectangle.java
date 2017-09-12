@@ -2,9 +2,10 @@ package main.model.model.shape;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import main.controller.utils.Constants;
+import main.model.User;
 import main.model.dao.Dao;
 import main.model.dao.RectangleDao;
-import main.model.User;
 
 public class Rectangle extends Shape {
 
@@ -75,4 +76,9 @@ public class Rectangle extends Shape {
         return new RectangleDao(getUser());
     }
 
+    @Override
+    public void clear(GraphicsContext gc) {
+        int strokeWidth = Constants.STROKE_WIDTH;
+        gc.clearRect(getX() - strokeWidth, getY() - strokeWidth, getWidth() + 2 * strokeWidth, getHeight() + 2 * strokeWidth);
+    }
 }

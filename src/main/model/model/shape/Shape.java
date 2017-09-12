@@ -53,10 +53,7 @@ public abstract class Shape implements Model {
 
     public abstract void draw(GraphicsContext gc);
 
-    public void clear(GraphicsContext gc) {
-        gc.setStroke(Color.WHITE);
-        draw(gc);
-    }
+    public abstract void clear(GraphicsContext gc);
 
     public abstract boolean contains(Point2D point);
 

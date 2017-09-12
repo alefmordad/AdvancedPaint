@@ -9,5 +9,6 @@ public class Constants {
     public static final String NO_SUCH_USER = "No Such User";
     public static final String WRONG_PASSWORD = "Wrong Password";
     public static final String CANT_BE_EMPTY = "Can't Be Empty";
+    public static final int STROKE_WIDTH = 1;
 
 }

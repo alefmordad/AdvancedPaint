@@ -2,6 +2,7 @@ package main.model;
 
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import main.model.model.shape.Shape;
 
@@ -41,7 +42,7 @@ public class Canvas {
 
     public void draw(Shape shape) {
         shapes.add(shape);
-        canvas.getGraphicsContext2D().setStroke(Paint.valueOf(shape.getStroke()));
+        canvas.getGraphicsContext2D().setStroke(Color.valueOf(shape.getStroke()));
         shape.draw(canvas.getGraphicsContext2D());
     }
 
@@ -52,6 +53,10 @@ public class Canvas {
     public void clear() {
         canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         shapes.clear();
+    }
+
+    public void clear(Shape shape) {
+        shape.clear(canvas.getGraphicsContext2D());
     }
 
     public Shape selectedShape(MouseEvent mouseEvent) {
@@ -73,4 +78,5 @@ public class Canvas {
         canvas.getGraphicsContext2D().setStroke(Paint.valueOf(shape.getStroke()));
         shape.draw(canvas.getGraphicsContext2D());
     }
+
 }

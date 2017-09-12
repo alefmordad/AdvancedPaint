@@ -11,9 +11,9 @@ public class Hibernate {
 
     static {
         {
-            Configuration configuration = new Configuration();
-            configuration.configure();
-            sessionFactory = configuration.buildSessionFactory();
+            Configuration cfg = new Configuration();
+            cfg.configure();
+            sessionFactory = cfg.buildSessionFactory();
             session = sessionFactory.openSession();
         }
     }
